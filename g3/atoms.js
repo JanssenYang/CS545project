@@ -1,19 +1,14 @@
 let cwidth=600, cheight=400;
 let ctx;
 let everything=[];
-// let rockbx=50, rockby=300, paperbx=150, paperby=300,scissorsbx=250, scissorsby=300;
-let goldx=50,goldy=300,woodx=150,woody=300,waterx=250,watery=300, firex=350,firey=300,soilx=450,soily=300;
+// let goldx=50,goldy=300,woodx=150,woody=300,waterx=250,watery=300, firex=350,firey=300,soilx=450,soily=300;
+// let goldx=306,goldy=33,woodx=77,woody=207,waterx=166,watery=488, firex=447,firey=488,soilx=534,soily=207;
+let goldx=200,goldy=30,woodx=35,woody=155,waterx=100,watery=365, firex=305,firey=365,soilx=365,soily=155;
 let canvas1, newscore, size=15, result;
 //error in double click on button
 let lock = true, tid;
-// let choices=["rock.jpg", "paper.jpg", "scissors.jpg"];
 let choices=["gold.jpg", "wood.jpg", "water.jpg","fire.jpg","soil.jpg"];
 let compimg = new Image();
-// let beats=[
-//     ["TIE: you both threw rock", "You win: computer threw rock", "You lose: computer threw rock"],
-//     ["You lose: computer threw paper", "TIE: you both threw paper", "You win: computer threw paper"],
-//     ["You win: computer threw scissors", "You lose: computer threw scissors","TIE: you both threw scissors"]
-//     ];
 let beats=[
     ["TIE: you both threw gold", "You lose a lot: computer threw gold", "You win a little: computer threw gold", "You win a lot: computer threw gold", "You lose a little: computer threw gold"],
     ["You win a lot: computer threw wood", "TIE: you both threw wood","You lose a little: computer threw wood", "You win a little: computer threw wood","You lose a lot: computer threw wood"],
@@ -21,7 +16,6 @@ let beats=[
     ["You lose a lot: computer threw fire", "You lose a little: computer threw fire","You win a lot: computer threw fire","TIE: you both threw fire","You win a little: computer threw fire"],
     ["You win a litte: computer threw soil", "You win a lot: computer threw soil","You lose a lot: computer threw soil","You win a little: computer threw soil","TIE: you both threw soil"]
 ];
-// let points=[[0,1,-1],[-1,0,1],[1,-1,0]];
 let points=[
     [0,-2,1,2,-1],
     [2,0,-1,1,-2],
@@ -56,6 +50,8 @@ let choose=(ev)=>{
     }else if(ev.offsetX|| ev.offsetX==0){
         mx=ev.offsetX; my=ev.offsetY;
     }
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(650,150,250,500);
     for( let i=0; i<everything.length; i++ ){
         let ch = everything[i];
         //error in double click
@@ -63,7 +59,7 @@ let choose=(ev)=>{
             drawall();
             lock=false;
             size=15;
-            tid = setInterval(flyin,100);
+            tid = setInterval(flyin,10);
             result = beats[compch][i];
             newscore = Number(document.f.score.value);
             newscore += points[compch][i];
@@ -72,11 +68,13 @@ let choose=(ev)=>{
     }
 }
 let flyin=()=>{
-    ctx.drawImage(compimg,70,100,size, size);
-    size += 5;
+    ctx.drawImage(compimg,700,300,size, size);
+    size += 0.5;
     if( size > 50 ){
         clearInterval(tid);
-        ctx.fillText(result, 200,100,250);
+        //font color
+        ctx.fillStyle="#8866aa";
+        ctx.fillText(result, 650,200,250);
         document.f.score.value = String(newscore);
         //error in double click
         lock = true;

@@ -1,7 +1,8 @@
 let cwidth=600, cheight=400;
 let ctx;
 let everything=[];
-let rockbx=50, rockby=300, paperbx=150, paperby=300,scissorsbx=250, scissorsby=300;
+// let rockbx=50, rockby=100, paperbx=50, paperby=200,scissorsbx=50, scissorsby=300;
+let rockbx=150, rockby=127, paperbx=50, paperby=300,scissorsbx=250, scissorsby=300;
 let canvas1, newscore, size=15, result;
 //error in double click on button
 let lock = true, tid;
@@ -46,7 +47,7 @@ let choose=(ev)=>{
             drawall();
             lock=false;
             size=15;
-            tid = setInterval(flyin,100);
+            tid = setInterval(flyin,10);
             result = beats[compch][i];
             newscore = Number(document.f.score.value);
             newscore += points[compch][i];
@@ -55,11 +56,14 @@ let choose=(ev)=>{
     }
 }
 let flyin=()=>{
-    ctx.drawImage(compimg,70,100,size, size);
-    size += 5;
+    ctx.drawImage(compimg,550,200,size, size);
+    size += 0.5;
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(400,50,300,100);
     if( size > 50 ){
         clearInterval(tid);
-        ctx.fillText(result, 200,100,250);
+        ctx.fillStyle="#8866aa";
+        ctx.fillText(result, 400,100,250);
         document.f.score.value = String(newscore);
         //error in double click
         lock = true;
