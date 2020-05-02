@@ -14,7 +14,7 @@ let beats=[
     ["You win a lot: computer threw wood", "TIE: you both threw wood","You lose a little: computer threw wood", "You win a little: computer threw wood","You lose a lot: computer threw wood"],
     ["You lose a little: computer threw water", "You win a little: computer threw water", "TIE: you both threw water", "You lose a lot: computer threw water","You win a lot: computer threw water"],
     ["You lose a lot: computer threw fire", "You lose a little: computer threw fire","You win a lot: computer threw fire","TIE: you both threw fire","You win a little: computer threw fire"],
-    ["You win a litte: computer threw soil", "You win a lot: computer threw soil","You lose a lot: computer threw soil","You win a little: computer threw soil","TIE: you both threw soil"]
+    ["You win a litte: computer threw soil", "You win a lot: computer threw soil","You lose a lot: computer threw soil","You lose a little: computer threw soil","TIE: you both threw soil"]
 ];
 let points=[
     [0,-2,1,2,-1],
@@ -41,7 +41,9 @@ let Throw=(sx,sy,smargin,swidth,sheight, rectcolor,picture)=>{
     return obj;
 }
 let choose=(ev)=>{
+    if( !lock ) return;
     let compch = Math.floor( Math.random()*5 );
+    // compch = 4;
     let compchn = choices[compch];
     compimg.src = compchn;
     let mx, my;
@@ -50,8 +52,6 @@ let choose=(ev)=>{
     }else if(ev.offsetX|| ev.offsetX==0){
         mx=ev.offsetX; my=ev.offsetY;
     }
-    ctx.fillStyle = "#ffffff";
-    ctx.fillRect(650,150,250,500);
     for( let i=0; i<everything.length; i++ ){
         let ch = everything[i];
         //error in double click
@@ -59,6 +59,8 @@ let choose=(ev)=>{
             drawall();
             lock=false;
             size=15;
+            ctx.fillStyle = "#ffffff";
+            ctx.fillRect(650,150,250,500);
             tid = setInterval(flyin,10);
             result = beats[compch][i];
             newscore = Number(document.f.score.value);

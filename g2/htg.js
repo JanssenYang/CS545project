@@ -31,6 +31,7 @@ let Throw=(sx,sy,smargin,swidth,sheight, rectcolor,picture)=>{
     return obj;
 }
 let choose=(ev)=>{
+    if( !lock) return;
     let compch = Math.floor( Math.random()*3 );
     let compchn = choices[compch];
     compimg.src = compchn;
@@ -47,6 +48,8 @@ let choose=(ev)=>{
             drawall();
             lock=false;
             size=15;
+            ctx.fillStyle = "#ffffff";
+            ctx.fillRect(400,50,250,400);
             tid = setInterval(flyin,10);
             result = beats[compch][i];
             newscore = Number(document.f.score.value);
@@ -58,9 +61,7 @@ let choose=(ev)=>{
 let flyin=()=>{
     ctx.drawImage(compimg,550,200,size, size);
     size += 0.5;
-    ctx.fillStyle = "#ffffff";
-    ctx.fillRect(400,50,300,100);
-    if( size > 50 ){
+    if( size > 80 ){
         clearInterval(tid);
         ctx.fillStyle="#8866aa";
         ctx.fillText(result, 400,100,250);
