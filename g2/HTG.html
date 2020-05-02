@@ -4,8 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hunter Tiger Gun</title>
+    <style>
+        form{
+            color: bule;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 16px;
+        }
+        input{
+            text-align: right;
+            font: inherit;
+            color: inherit;
+        }
+    </style>
 </head>
-<body>
-    
+<body onload="init();">
+    <h1>Hunter Tiger Gun</h1>
+    <form name="f">
+        <label>
+            Score: <input type="text" name="score" value="0" size="3">
+        </label>
+    </form><br>
+
+    <canvas id="canvas" width="900" height="600">Your browser doesn't support html5 element canvas.</canvas>
+    <script src="./htg.js"></script>
 </body>
 </html>
