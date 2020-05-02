@@ -70,8 +70,8 @@ let flyin=()=>{
     }
 }
 let rockb = Throw(rockbx, rockby, 8, 50, 50,"rgb(250,0,0)", "rock.jpg");
-let paperb = Throw(paperbx,paperby,8,50,50,"rgb(0,200,200)", "paper.jpg");
-let scib = Throw(scissorsbx, scissorsby, 8,50,50,"rgb(0,0,200)","scissors.jpg");
+let paperb = Throw(paperbx,paperby,8,50,50,"rgb(0,0,250)", "paper.jpg");
+let scib = Throw(scissorsbx, scissorsby, 8,50,50,"rgb(0,250,0)","scissors.jpg");
 everything.push(rockb);
 everything.push(paperb);
 everything.push(scib);
