@@ -47,7 +47,7 @@ let Throw=(sx,sy,smargin,swidth,sheight, rectcolor,picture)=>{
     return obj;
 }
 let choose=(ev)=>{
-    let compch = Math.floor( Math.random()*3 );
+    let compch = Math.floor( Math.random()*5 );
     let compchn = choices[compch];
     compimg.src = compchn;
     let mx, my;
