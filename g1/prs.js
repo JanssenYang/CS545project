@@ -3,7 +3,7 @@ let ctx;
 let everything=[];
 // let rockbx=50, rockby=100, paperbx=50, paperby=200,scissorsbx=50, scissorsby=300;
 let rockbx=150, rockby=127, paperbx=50, paperby=300,scissorsbx=250, scissorsby=300;
-let canvas1, newscore, size=15, result;
+let canvas1, newscore, size=15, result, bestscore=0;
 //error in double click on button
 let lock = true, tid;
 let choices=["rock.jpg", "paper.jpg", "scissors.jpg"];
@@ -69,6 +69,10 @@ let flyin=()=>{
         document.f.score.value = String(newscore);
         //error in double click
         lock = true;
+        if( newscore > bestscore ){
+            bestscore = newscore;
+            localStorage.game1 = bestscore;
+        }
     }
 }
 let rockb = Throw(rockbx, rockby, 8, 50, 50,"rgb(250,0,0)", "rock.jpg");
@@ -85,6 +89,9 @@ let init=()=>{
     drawall();
     ctx.font= "bold 16pt Georgia";
     ctx.fillStyle = "blue";
+    if(!localStorage.game1){
+        localStorage.game1=0;
+    }
 }
 let drawall=()=>{
     ctx.clearRect(0,0,cwidth, cheight);

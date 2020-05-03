@@ -4,7 +4,7 @@ let everything=[];
 // let goldx=50,goldy=300,woodx=150,woody=300,waterx=250,watery=300, firex=350,firey=300,soilx=450,soily=300;
 // let goldx=306,goldy=33,woodx=77,woody=207,waterx=166,watery=488, firex=447,firey=488,soilx=534,soily=207;
 let goldx=200,goldy=30,woodx=35,woody=155,waterx=100,watery=365, firex=305,firey=365,soilx=365,soily=155;
-let canvas1, newscore, size=15, result;
+let canvas1, newscore, size=15, result, bestscore;
 //error in double click on button
 let lock = true, tid;
 let choices=["gold.jpg", "wood.jpg", "water.jpg","fire.jpg","soil.jpg"];
@@ -80,6 +80,10 @@ let flyin=()=>{
         document.f.score.value = String(newscore);
         //error in double click
         lock = true;
+        if( newscore > bestscore ){
+            bestscore = newscore;
+            localStorage.game3 = bestscore;
+        }
     }
 }
 // let rockb = Throw(rockbx, rockby, 8, 50, 50,"rgb(250,0,0)", "rock.jpg");
@@ -103,6 +107,9 @@ let init=()=>{
     drawall();
     ctx.font= "bold 16pt Georgia";
     ctx.fillStyle = "blue";
+    if(!localStorage.game3){
+        localStorage.game3=0;
+    }
 }
 let drawall=()=>{
     ctx.clearRect(0,0,cwidth, cheight);
