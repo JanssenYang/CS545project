@@ -50,8 +50,8 @@ let choose=(ev)=>{
             ctx.fillRect(650,50,250,500);
             ctx.fillRect(200,200,80,80);
             ctx.fillStyle = "blue";
-            ctx.fillText("PLAYER", 5,60,50);
-            ctx.fillText("COMPUTER",750,60,50);
+            ctx.fillText("PLAYER", 5,60,80);
+            ctx.fillText("COMPUTER",750,60,80);
             lock=false;
             size=15;
             plypimg.src = ch.img.src;
@@ -94,8 +94,8 @@ let init=()=>{
     drawall();
     ctx.font= "bold 16pt Georgia";
     ctx.fillStyle = "blue";
-    ctx.fillText("PLAYER", 5,60,50);
-    ctx.fillText("COMPUTER",750,60,50);
+    ctx.fillText("PLAYER", 5,60,80);
+    ctx.fillText("COMPUTER",750,60,80);
     if(!localStorage.game2){
         localStorage.game2=0;
     }
