@@ -47,12 +47,15 @@ let choose=(ev)=>{
         //error in double click
         if( mx>ch.sx && mx<ch.sx+ch.bwidth && my>ch.sy && my<ch.sy+ch.bheight && lock ){
             drawall();
-            lock=false;
-            size=15;
-            plypimg.src = ch.img.src;
             ctx.fillStyle = "#ffffff";
             ctx.fillRect(650,50,250,500);
             ctx.fillRect(200,200,80,80);
+            ctx.fillStyle = "blue";
+            ctx.fillText("PLAYER", 5,60,50);
+            ctx.fillText("COMPUTER",750,60,50);
+            lock=false;
+            size=15;
+            plypimg.src = ch.img.src;
             tid = setInterval(flyin,10);
             result = beats[compch][i];
             newscore = Number(document.f.score.value);
@@ -92,6 +95,8 @@ let init=()=>{
     drawall();
     ctx.font= "bold 16pt Georgia";
     ctx.fillStyle = "blue";
+    ctx.fillText("PLAYER", 5,60,50);
+    ctx.fillText("COMPUTER",750,60,50);
     if(!localStorage.game1){
         localStorage.game1=0;
     }
