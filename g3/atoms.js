@@ -8,7 +8,7 @@ let canvas1, newscore, size=15, result, bestscore;
 //error in double click on button
 let lock = true, tid;
 let choices=["gold.jpg", "wood.jpg", "water.jpg","fire.jpg","soil.jpg"];
-let compimg = new Image();
+let compimg = new Image(), plypimg = new Image();
 let beats=[
     ["TIE: you both threw gold", "You lose a lot: computer threw gold", "You win a little: computer threw gold", "You win a lot: computer threw gold", "You lose a little: computer threw gold"],
     ["You win a lot: computer threw wood", "TIE: you both threw wood","You lose a little: computer threw wood", "You win a little: computer threw wood","You lose a lot: computer threw wood"],
@@ -59,8 +59,10 @@ let choose=(ev)=>{
             drawall();
             lock=false;
             size=15;
+            plypimg.src = ch.img.src;
             ctx.fillStyle = "#ffffff";
-            ctx.fillRect(650,150,250,500);
+            ctx.fillRect(650,50,250,500);
+            ctx.fillRect(200,200,80,80);
             tid = setInterval(flyin,10);
             result = beats[compch][i];
             newscore = Number(document.f.score.value);
@@ -70,13 +72,14 @@ let choose=(ev)=>{
     }
 }
 let flyin=()=>{
-    ctx.drawImage(compimg,700,300,size, size);
+    ctx.drawImage(compimg,700,200,size, size);
     size += 0.5;
     if( size > 80 ){
         clearInterval(tid);
         //font color
         ctx.fillStyle="#8866aa";
-        ctx.fillText(result, 650,200,250);
+        ctx.fillText(result, 650,100,250);
+        ctx.drawImage(plypimg,200,200,size, size);
         document.f.score.value = String(newscore);
         //error in double click
         lock = true;

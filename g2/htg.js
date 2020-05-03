@@ -2,12 +2,12 @@ let cwidth=600, cheight=400;
 let ctx;
 let everything=[];
 // let rockbx=50, rockby=100, paperbx=50, paperby=200,scissorsbx=50, scissorsby=300;
-let rockbx=150, rockby=127, paperbx=50, paperby=300,scissorsbx=250, scissorsby=300;
+let rockbx=200, rockby=40, paperbx=50, paperby=300,scissorsbx=350, scissorsby=300;
 let canvas1, newscore, size=15, result, bestscore;
 //error in double click on button
 let lock = true, tid;
 let choices=["rock.jpg", "paper.jpg", "scissors.jpg"];
-let compimg = new Image();
+let compimg = new Image(), plypimg = new Image();
 let beats=[
     ["TIE: you both threw hunter", "You win: computer threw hunter", "You lose: computer threw hunter"],
     ["You lose: computer threw tiger", "TIE: you both threw tiger", "You win: computer threw tiger"],
@@ -48,8 +48,10 @@ let choose=(ev)=>{
             drawall();
             lock=false;
             size=15;
+            plypimg.src = ch.img.src;
             ctx.fillStyle = "#ffffff";
-            ctx.fillRect(400,50,250,400);
+            ctx.fillRect(650,50,250,500);
+            ctx.fillRect(200,200,80,80);
             tid = setInterval(flyin,10);
             result = beats[compch][i];
             newscore = Number(document.f.score.value);
@@ -59,12 +61,13 @@ let choose=(ev)=>{
     }
 }
 let flyin=()=>{
-    ctx.drawImage(compimg,550,200,size, size);
+    ctx.drawImage(compimg,700,200,size, size);
     size += 0.5;
     if( size > 80 ){
         clearInterval(tid);
         ctx.fillStyle="#8866aa";
-        ctx.fillText(result, 400,100,250);
+        ctx.fillText(result, 650,100,250);
+        ctx.drawImage(plypimg,200,200,size, size);
         document.f.score.value = String(newscore);
         //error in double click
         lock = true;
