@@ -4,20 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BEST HISTORY</title>
+    <link rel= "stylesheet" href="../public/site.css"/>
+    <style>
+        p{
+            font-size: 50pt;
+            text-align: center;
+            color: saddlebrown;
+
+        }
+    </style>
 </head>
 <body>
+    <h1><center><img src="../src/htn.jpg" ></center></h1>
+    <br><br><br>
     <article id="arti">
+        <p>BEST HISTORY: </p>
     </article>
 
+    <br>
     <a href="game2.html" ><img src="../src/goBack.JPG" width="50" height="50"></a>
     <script>
         let a = localStorage.game2;
         let arti = document.getElementById('arti');
         let p = document.createElement('p');
         if(a && typeof(a) == "string"){
-            p.innerHTML = "The best history of Hunter Tiger and Gun is "+ a;
+            p.innerHTML =  a;
         }else{
-            p.innerHTML = "There is no history now."
+            p.innerHTML = "0";
         }
         arti.appendChild(p);
     </script>
