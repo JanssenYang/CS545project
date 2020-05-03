@@ -72,7 +72,7 @@ let choose=(ev)=>{
 let flyin=()=>{
     ctx.drawImage(compimg,700,300,size, size);
     size += 0.5;
-    if( size > 50 ){
+    if( size > 80 ){
         clearInterval(tid);
         //font color
         ctx.fillStyle="#8866aa";
